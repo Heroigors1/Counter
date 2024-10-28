@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Counter.Views.AddCounterPage"
+             Title="AddCounterPage">
+    <VerticalStackLayout
+        Spacing="20"
+        Margin="15"
+        MaximumWidthRequest="500">
+        <Label 
+            Text="Dodaj licznik"
+            FontAttributes="Bold"
+            FontSize="Header"
+            VerticalOptions="Center" 
+            HorizontalOptions="Fill"
+            HorizontalTextAlignment="Center"/>
+        <Entry
+            x:Name="NameEntry"
+            Placeholder="Podaj nazwę"
+            HorizontalOptions="Fill" />
+        <Entry
+            x:Name="DefaultValueEntry"
+            Text="0"
+            Placeholder="Podaj wartość początkową:"
+            HorizontalOptions="Fill" />
+        <Picker
+            Title="Wybierz kolor licznika"
+            x:Name="ColorPicker">
+            <Picker.Items>
+                <x:String>Czerwony</x:String>
+                <x:String>Niebieski</x:String>
+                <x:String>Żółty</x:String>
+                <x:String>Zielony</x:String>
+            </Picker.Items>
+        </Picker>
+        <Button
+            Text="Dodaj licznik"
+            HorizontalOptions="Fill"
+            Clicked="OnAddButtonClicked" />
+    </VerticalStackLayout>
+</ContentPage>

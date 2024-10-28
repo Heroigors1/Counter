@@ -1,0 +1,63 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Counter.Views.AllCountersPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="Add"
+            IconImageSource="{FontImage Glyph='+', Color=Black, Size=22}"
+            Clicked="AddClicked"/>
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout
+        Spacing="25"
+        WidthRequest="500">
+        <Label 
+            Text="Liczniki"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <CollectionView 
+            ItemsSource="{Binding Counters}"
+            HorizontalOptions="Center"
+            WidthRequest="500">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout
+                        HorizontalOptions="Center"
+                        WidthRequest="500"
+                        Spacing="15"
+                        Margin="10">
+
+                        <Button
+                            Text="+"
+                            Clicked="OnIncrementClicked"
+                            HorizontalOptions="Start"
+                            HeightRequest="30"
+                            Margin="10"/>
+
+                        <VerticalStackLayout
+                            Spacing="5">
+                            <Label
+                                Text="{Binding Name}"
+                                HorizontalOptions="Center"/>
+
+                            <Label
+                                Text="{Binding Value}"
+                                HorizontalOptions="Center"/>
+
+                        </VerticalStackLayout>
+
+                        <Button
+                            Text="-"
+                            Clicked="OnDecrementClicked"
+                            HorizontalOptions="End"
+                            HeightRequest="30"
+                            Margin="10"/>
+
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
