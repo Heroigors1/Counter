@@ -74,6 +74,24 @@ public partial class AllCountersPage : ContentPage
             }
         }
     }
+    
+    private void OnResetClicked(object sender, EventArgs e)
+    {
+        if (sender is Button button && button.BindingContext is CounterModel counter)
+        {
+            counter.Value = counter.DefaultValue;
+            SaveCounters();
+        }
+    }
+    
+    private void OnDeleteClicked(object sender, EventArgs e)
+    {
+        if (sender is Button button && button.BindingContext is CounterModel counter)
+        {
+            Counters.Remove(counter);
+            SaveCounters();
+        }
+    }
 
     private void SaveCounters()
     {
@@ -93,4 +111,6 @@ public partial class AllCountersPage : ContentPage
 
         xDoc.Save(filePath);
     }
+
+    
 }

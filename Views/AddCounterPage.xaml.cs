@@ -32,6 +32,25 @@ public partial class AddCounterPage : ContentPage
             return;
         }
 
+		switch (color)
+		{
+			case "Czerwony":
+				color = "red";
+				break;
+			case "¯ó³ty":
+				color = "yellow";
+				break;
+			case "Niebieski":
+				color = "blue";
+				break;
+			case "Zielony":
+				color = "green";
+				break;
+			default:
+				color = "black";
+				break;
+		}
+
 		var counter = new CounterModel
 		{
 			Id = Guid.NewGuid().GetHashCode(),
