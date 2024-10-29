@@ -22,7 +22,8 @@
             x:Name="DefaultValueEntry"
             Text="0"
             Placeholder="Podaj wartość początkową:"
-            HorizontalOptions="Fill" />
+            HorizontalOptions="Fill"
+            MaxLength="5"/>
         <Picker
             Title="Wybierz kolor licznika"
             x:Name="ColorPicker">
