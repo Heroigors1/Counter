@@ -18,17 +18,23 @@ public partial class AddCounterPage : ContentPage
 
 		if (string.IsNullOrEmpty(name))
 		{
-			await DisplayAlert("B³¹d", "Podaj nazwê licznika", "Ok");
+			await DisplayAlert("BÂ³Â¹d", "Podaj nazwÃª licznika", "Ok");
 			return;
 		}
-		
-		int value = int.Parse(DefaultValueEntry.Text);
+  
+		string stringValue = DefaultValueEntry.Text;
+
+    		if(!int.TryParse(stringValue, out int value))
+      		{
+      			await DisplayAlert("BÂ³Â¹d", "BÅ‚Ä…d ustawiania wartoÅ›ci poczÄ…tkowej", "Ok");
+			return;
+		}
 
 		string color = ColorPicker.SelectedItem?.ToString();
 
 		if (string.IsNullOrEmpty(color))
 		{
-            await DisplayAlert("B³¹d", "Wybierz kolor", "Ok");
+            await DisplayAlert("BÂ³Â¹d", "Wybierz kolor", "Ok");
             return;
         }
 
@@ -37,7 +43,7 @@ public partial class AddCounterPage : ContentPage
 			case "Czerwony":
 				color = "red";
 				break;
-			case "¯ó³ty":
+			case "Â¯Ã³Â³ty":
 				color = "yellow";
 				break;
 			case "Niebieski":
@@ -61,7 +67,7 @@ public partial class AddCounterPage : ContentPage
 		};
 
 		SaveCounter(counter);
-		await DisplayAlert("Sukces", "Licznik zosta³ dodany.", "OK");
+		await DisplayAlert("Sukces", "Licznik zostaÂ³ dodany.", "OK");
         await Navigation.PopAsync();
     }
 
