@@ -1,6 +1,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Counter.Views.AllCountersPage">
+             x:Class="Counter.Views.AllCountersPage"
+             Padding="20">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem
@@ -11,68 +12,92 @@
 
     <ScrollView>
         <VerticalStackLayout
-            Spacing="25"
-            WidthRequest="500">
+            Spacing="30"
+            HorizontalOptions="FillAndExpand">
+            
             <Label 
                 Text="Liczniki"
+                FontSize="24"
+                FontAttributes="Bold"
                 VerticalOptions="Center" 
                 HorizontalOptions="Center" />
-
+            
             <CollectionView 
                 ItemsSource="{Binding Counters}"
-                HorizontalOptions="Center"
-                WidthRequest="500">
+                HorizontalOptions="FillAndExpand">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <VerticalStackLayout>
-                            <HorizontalStackLayout
-                                HorizontalOptions="Center"
-                                Spacing="15"
-                                Margin="10"
-                                BackgroundColor="{Binding Color}">
+                        <Frame
+                            Margin="10"
+                            Padding="15"
+                            CornerRadius="10"
+                            BackgroundColor="{Binding Color}"
+                            MaximumWidthRequest="500"
+                            HorizontalOptions="FillAndExpand">
+                            <VerticalStackLayout Spacing="15">
 
-                                <Button
-                                    Text="+"
-                                    Clicked="OnIncrementClicked"
-                                    HorizontalOptions="Start"
-                                    HeightRequest="30"
-                                    Margin="10"/>
+                                <HorizontalStackLayout
+                                    HorizontalOptions="Center"
+                                    Spacing="10">
 
-                                <VerticalStackLayout
-                                    Spacing="5">
-                                    <Label
-                                        Text="{Binding Name}"
-                                        HorizontalOptions="Center"/>
+                                    <Button
+                                        Text="+"
+                                        Clicked="OnIncrementClicked"
+                                        HorizontalOptions="Start"
+                                        HeightRequest="40"
+                                        WidthRequest="40"
+                                        BackgroundColor="LightGray"
+                                        CornerRadius="20"/>
 
-                                    <Label
-                                        Text="{Binding Value}"
-                                        HorizontalOptions="Center"/>
+                                    <VerticalStackLayout
+                                        Spacing="5"
+                                        HorizontalOptions="CenterAndExpand">
+                                        <Label
+                                            Text="{Binding Name}"
+                                            FontSize="18"
+                                            HorizontalOptions="Center"/>
+                                        <Label
+                                            Text="{Binding Value}"
+                                            FontSize="18"
+                                            FontAttributes="Bold"
+                                            HorizontalOptions="Center"/>
+                                    </VerticalStackLayout>
 
-                                </VerticalStackLayout>
+                                    <Button
+                                        Text="-"
+                                        Clicked="OnDecrementClicked"
+                                        HorizontalOptions="End"
+                                        HeightRequest="40"
+                                        WidthRequest="40"
+                                        BackgroundColor="LightGray"
+                                        CornerRadius="20"/>
 
-                                <Button
-                                    Text="-"
-                                    Clicked="OnDecrementClicked"
-                                    HorizontalOptions="End"
-                                    HeightRequest="30"
-                                    Margin="10"/>
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout
+                                    HorizontalOptions="Center"
+                                    Spacing="20"
+                                    Margin="10,0,10,0">
 
-                            </HorizontalStackLayout>
-                            
-                            <Button
-                                Text="Reset"
-                                Clicked="OnResetClicked"/>
+                                    <Button
+                                        Text="Reset"
+                                        Clicked="OnResetClicked"
+                                        HorizontalOptions="FillAndExpand"
+                                        BackgroundColor="LightBlue"
+                                        CornerRadius="5"/>
 
-                            <Button
-                                Text="Usun"
-                                Clicked="OnDeleteClicked"/>
-                            
-                        </VerticalStackLayout>
+                                    <Button
+                                        Text="Usun"
+                                        Clicked="OnDeleteClicked"
+                                        HorizontalOptions="FillAndExpand"
+                                        BackgroundColor="LightCoral"
+                                        CornerRadius="5"/>
 
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
-    
 </ContentPage>
